@@ -625,6 +625,8 @@ body,
 @media (max-width: 767px) {
   .VPDoc {
     overflow-x: hidden !important;
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
   }
 }
 
