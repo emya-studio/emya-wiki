@@ -124,7 +124,7 @@ export default defineConfig({
       }
     },
     editLink: {
-      pattern: 'https://github.com/emya/emya-wiki/edit/main/docs/:path',
+      pattern: 'https://github.com/emya-studio/emya-wiki/edit/main/docs/:path',
       text: 'ویرایش این صفحه در گیت‌هاب'
     },
     footer: {
