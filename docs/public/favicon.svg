@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 65" fill="none">
+  <!-- Left Chevron -->
+  <path d="M38 2 L38 17 L22.5 32.5 L38 48 L38 63 L23 63 L1.5 41.5 L1.5 23.5 L23 2 Z" fill="#0284c7" />
+  <!-- Center Circle -->
+  <circle cx="50" cy="32.5" r="11" fill="#0284c7" />
+  <!-- Right Chevron -->
+  <path d="M62 2 L62 17 L77.5 32.5 L62 48 L62 63 L77 63 L98.5 41.5 L98.5 23.5 L77 2 Z" fill="#0284c7" />
+</svg>

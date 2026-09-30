@@ -1,0 +1,887 @@
+/* ========================================================
+   Emya Wiki - Comprehensive Persian RTL Stylesheet
+   ======================================================== */
+
+@import url('https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css');
+
+:root {
+  --vp-font-family-base: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --vp-sidebar-width: 272px;
+  --vp-c-brand-1: #0284c7;
+  --vp-c-brand-2: #0369a1;
+  --vp-c-brand-3: #075985;
+  --vp-c-brand-soft: rgba(2, 132, 199, 0.14);
+}
+
+.dark {
+  --vp-c-brand-1: #38bdf8;
+  --vp-c-brand-2: #0284c7;
+  --vp-c-brand-3: #0369a1;
+  --vp-c-brand-soft: rgba(56, 189, 248, 0.16);
+}
+
+/* 1. Global RTL */
+html,
+body,
+#app {
+  direction: rtl !important;
+  text-align: right !important;
+  font-family: var(--vp-font-family-base) !important;
+  font-feature-settings: 'ss01';
+}
+
+/* 2. Top Navigation Bar (NavBar) */
+.VPNavBar {
+  background-color: var(--vp-nav-bg-color) !important;
+  border-bottom: 1px solid var(--vp-c-divider) !important;
+  position: relative !important;
+}
+
+.content-body,
+.VPNavBar .content-body,
+.VPNavBar:not(.home.top) .content-body,
+.VPNavBar:not(.has-sidebar):not(.home.top) .content-body {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
+/* Hide conflicting internal VitePress divider line */
+.VPNavBar .divider,
+.VPNavBar .divider-line {
+  display: none !important;
+}
+
+/* Default / Homepage NavBar with proper padding & container alignment */
+.VPNavBar .wrapper {
+  padding: 0 16px !important;
+}
+
+@media (min-width: 768px) {
+  .VPNavBar .wrapper {
+    padding: 0 32px !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPNavBar .wrapper {
+    padding: 0 48px !important;
+  }
+}
+
+/* TARGET STRICTLY DIRECT CHILD CONTAINER TO AVOID BREAKING HAMBURGER BUTTON CONTAINER */
+.VPNavBar > .wrapper > .container {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  height: var(--vp-nav-height) !important;
+  max-width: var(--vp-layout-max-width) !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+.VPNavBar .title {
+  display: flex !important;
+  align-items: center !important;
+  flex-shrink: 0 !important;
+  height: var(--vp-nav-height) !important;
+}
+
+.VPNavBarTitle {
+  display: flex !important;
+  align-items: center !important;
+}
+
+.VPNavBarTitle .logo {
+  height: 36px !important;
+  max-width: 110px !important;
+  object-fit: contain !important;
+  margin: 0 !important;
+}
+
+.VPNavBar .content {
+  flex-grow: 1 !important;
+  display: flex !important;
+  align-items: center !important;
+  height: var(--vp-nav-height) !important;
+}
+
+.VPNavBar .content-body {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  height: var(--vp-nav-height) !important;
+}
+
+/* Desktop Nav Menu Links (>= 768px) */
+@media (min-width: 768px) {
+  .VPNavBarMenu {
+    display: flex !important;
+    flex-direction: row !important;
+    direction: rtl !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+
+  .VPNavBar .content-body .menu {
+    order: 1 !important;
+    margin-right: 24px !important;
+    margin-left: auto !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+}
+
+/* Bold and active style for Wiki link */
+.VPNavBarMenu .VPNavBarMenuLink[href="/"],
+.VPNavBarMenu .VPNavBarMenuLink.active {
+  font-weight: 800 !important;
+  color: var(--vp-c-brand-1) !important;
+  position: relative !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink[href="/"] span,
+.VPNavBarMenu .VPNavBarMenuLink.active span {
+  font-weight: 800 !important;
+  color: var(--vp-c-brand-1) !important;
+}
+
+.VPNavBarMenu .VPNavBarMenuLink[href="/"]::after,
+.VPNavBarMenu .VPNavBarMenuLink.active::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: 12px !important;
+  right: 8px !important;
+  left: 8px !important;
+  height: 3px !important;
+  background-color: var(--vp-c-brand-1) !important;
+  border-radius: 9999px !important;
+}
+
+/* Search box beside theme switch on left */
+.VPNavBarSearch.search,
+.VPNavBarSearch,
+.VPNavBar .content-body .search,
+#local-search {
+  order: 2 !important;
+  margin-left: 10px !important;
+  margin-right: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-end !important;
+  padding: 0 !important;
+  flex-grow: 0 !important;
+  height: 100% !important;
+}
+
+@media (min-width: 768px) {
+  .VPNavBarSearch.search,
+  .VPNavBarSearch,
+  .VPNavBar .content-body .search {
+    padding: 0 !important;
+    flex-grow: 0 !important;
+    justify-content: flex-end !important;
+  }
+}
+
+/* Theme switch on far left */
+.VPNavBar .content-body .appearance {
+  order: 3 !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.VPNavBar .content-body .social-links {
+  order: 4 !important;
+}
+
+.VPNavBar .content-body .extra {
+  order: 5 !important;
+}
+
+/* Remove default dividers */
+.VPNavBar .content-body .menu + .appearance::before,
+.VPNavBar .content-body .appearance::before,
+.VPNavBar .content-body .translations + .appearance::before {
+  display: none !important;
+}
+
+/* Search Bar Button: Strict Height & Safe Margin from Header Border */
+.DocSearch-Button {
+  direction: rtl !important;
+  height: 36px !important;
+  max-height: 36px !important;
+  margin: 0 !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  border-radius: 8px !important;
+  background-color: var(--vp-c-bg-alt) !important;
+  padding: 0 10px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  box-sizing: border-box !important;
+}
+
+.DocSearch-Button .DocSearch-Search-Icon {
+  margin-right: 0 !important;
+  margin-left: 8px !important;
+  width: 15px !important;
+  height: 15px !important;
+}
+
+.DocSearch-Button .DocSearch-Button-Placeholder {
+  padding-right: 0 !important;
+  padding-left: 16px !important;
+  font-size: 13px !important;
+  margin: 0 !important;
+}
+
+.DocSearch-Button .DocSearch-Button-Keys {
+  direction: ltr !important;
+  margin-right: auto !important;
+  margin-left: 0 !important;
+}
+
+/* ========================================================
+   Mobile Header (< 768px) & Hamburger Menu Fix
+   ======================================================== */
+@media (max-width: 767px) {
+  .VPNavBar .wrapper {
+    padding: 0 12px !important;
+  }
+
+  .VPNavBarTitle .logo {
+    height: 30px !important;
+    max-width: 85px !important;
+  }
+
+  /* Hide desktop menu links on mobile */
+  .VPNavBarMenu,
+  .VPNavBar .content-body .menu {
+    display: none !important;
+  }
+
+  .VPNavBar .content {
+    flex-grow: 0 !important;
+  }
+
+  .VPNavBar .content-body {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    gap: 8px !important;
+    height: var(--vp-nav-height) !important;
+  }
+
+  .VPNavBarSearch.search,
+  .VPNavBarSearch,
+  .VPNavBar .content-body .search {
+    order: 1 !important;
+    margin: 0 !important;
+  }
+
+  .VPNavBar .content-body .appearance {
+    order: 2 !important;
+    margin: 0 !important;
+  }
+
+  .VPNavBar .content-body .hamburger {
+    order: 3 !important;
+    margin: 0 !important;
+    display: flex !important;
+  }
+}
+
+/* Hamburger visibility: Strictly hidden on desktop, visible on mobile */
+@media (min-width: 768px) {
+  .VPNavBarHamburger,
+  .VPNavBar .content-body .hamburger {
+    display: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .VPNavBarHamburger,
+  .VPNavBar .content-body .hamburger {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 40px !important;
+    height: var(--vp-nav-height) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
+
+.VPNavBarHamburger .container {
+  position: relative !important;
+  width: 16px !important;
+  height: 14px !important;
+  overflow: hidden !important;
+  display: block !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.VPNavBarHamburger .top,
+.VPNavBarHamburger .middle,
+.VPNavBarHamburger .bottom {
+  position: absolute !important;
+  width: 16px !important;
+  height: 2px !important;
+  background-color: var(--vp-c-text-1) !important;
+}
+
+.VPNavBarHamburger .top {
+  top: 0 !important;
+  left: 0 !important;
+}
+
+.VPNavBarHamburger .middle {
+  top: 6px !important;
+  left: 0 !important;
+}
+
+.VPNavBarHamburger .bottom {
+  top: 12px !important;
+  left: 0 !important;
+}
+
+/* ========================================================
+   Doc Pages with Sidebar: Pin Logo over Sidebar
+   ======================================================== */
+@media (min-width: 960px) {
+  .VPNavBar.has-sidebar .wrapper {
+    padding: 0 !important;
+  }
+
+  .VPNavBar.has-sidebar > .wrapper > .container {
+    max-width: 100% !important;
+    margin: 0 !important;
+  }
+
+  /* Logo pinned on top of sidebar, centered horizontally */
+  .VPNavBar.has-sidebar .title {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: var(--vp-sidebar-width) !important;
+    height: var(--vp-nav-height) !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    padding: 0 !important;
+    border-left: 1px solid var(--vp-c-divider) !important;
+    border-bottom: 1px solid var(--vp-c-divider) !important;
+    background-color: var(--vp-nav-bg-color) !important;
+    z-index: 12 !important;
+  }
+
+  .VPNavBar.has-sidebar .VPNavBarTitle {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+
+  .VPNavBar.has-sidebar .VPNavBarTitle .logo {
+    margin: 0 auto !important;
+  }
+
+  /* Content area starts right beside sidebar */
+  .VPNavBar.has-sidebar .content {
+    position: relative !important;
+    margin-right: var(--vp-sidebar-width) !important;
+    padding: 0 32px !important;
+    width: calc(100% - var(--vp-sidebar-width)) !important;
+  }
+
+  .VPNavBar.has-sidebar .content-body .menu {
+    margin-right: 0 !important;
+  }
+}
+
+/* 3. Right Sidebar without padding-right */
+@media (min-width: 960px) {
+  .VPSidebar {
+    position: fixed !important;
+    top: 0 !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: auto !important;
+    width: var(--vp-sidebar-width) !important;
+    padding-top: var(--vp-nav-height) !important;
+    padding-right: 0 !important;
+    padding-left: 16px !important;
+    border-right: none !important;
+    border-left: 1px solid var(--vp-c-divider) !important;
+    background-color: var(--vp-sidebar-bg-color) !important;
+    box-shadow: none !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPSidebar {
+    padding-right: 0 !important;
+    padding-left: 16px !important;
+    width: var(--vp-sidebar-width) !important;
+  }
+}
+
+.VPSidebar .nav {
+  padding-right: 0 !important;
+}
+
+.VPSidebarGroup {
+  padding-right: 0 !important;
+}
+
+.VPSidebarItem.level-0 {
+  padding-right: 12px !important;
+  padding-left: 0 !important;
+}
+
+/* Mobile Sidebar Drawer */
+@media (max-width: 959px) {
+  .VPSidebar {
+    left: auto !important;
+    right: 0 !important;
+    transform: translateX(100%) !important;
+  }
+
+  .VPSidebar.open {
+    transform: translateX(0) !important;
+  }
+}
+
+.VPSidebarItem .indicator {
+  left: auto !important;
+  right: -17px !important;
+}
+
+.VPSidebarItem .text {
+  text-align: right !important;
+}
+
+/* Sidebar Topics Level 0: Heavier weight */
+.VPSidebarItem.level-0 > .item .text,
+.VPSidebarItem.level-0 .text {
+  font-weight: 850 !important;
+  font-size: 15.5px !important;
+  color: var(--vp-c-text-1) !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* Sidebar Sub-items: Lighter weight */
+.VPSidebarItem.level-1 .text,
+.VPSidebarItem.level-2 .text,
+.VPSidebarItem.level-3 .text {
+  font-weight: 400 !important;
+  font-size: 13.5px !important;
+  color: var(--vp-c-text-2) !important;
+}
+
+.VPSidebarItem.level-1.is-active .text,
+.VPSidebarItem.level-1.has-active .text {
+  font-weight: 700 !important;
+  color: var(--vp-c-brand-1) !important;
+}
+
+/* Interactive Sidebar Resizer Handle */
+.sidebar-resizer {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -3px;
+  width: 6px;
+  cursor: col-resize;
+  z-index: 100;
+  transition: background-color 0.2s;
+}
+
+.sidebar-resizer:hover,
+.sidebar-resizer.dragging {
+  background-color: var(--vp-c-brand-1) !important;
+}
+
+@media (max-width: 959px) {
+  .sidebar-resizer {
+    display: none !important;
+  }
+}
+
+/* Nested Sidebar Items in RTL */
+.VPSidebarItem.level-1 .items,
+.VPSidebarItem.level-2 .items,
+.VPSidebarItem.level-3 .items,
+.VPSidebarItem.level-4 .items,
+.VPSidebarItem.level-5 .items {
+  border-left: none !important;
+  border-right: 1px solid var(--vp-c-divider) !important;
+  padding-left: 0 !important;
+  padding-right: 16px !important;
+}
+
+/* Caret in Sidebar: Points LEFT (<) when closed, points DOWN (v) when open */
+.caret-icon,
+.vpi-chevron-right.caret-icon {
+  transition: transform 0.25s ease !important;
+}
+
+.VPSidebarItem.collapsed .caret-icon {
+  transform: rotate(180deg) !important;
+}
+
+.VPSidebarItem:not(.collapsed) .caret-icon {
+  transform: rotate(90deg) !important;
+}
+
+/* External Link Icons: Arrow points up-left (↖) */
+.vp-external-link-icon::after,
+:is(.vp-external-link-icon, .vp-doc a[href*='://'], .vp-doc a[target='_blank']):not(:is(.no-icon, svg a, :has(img, svg)))::after {
+  transform: scaleX(-1) !important;
+  margin-left: 0 !important;
+  margin-right: 5px !important;
+}
+
+/* Pager Previous / Next Button Arrows */
+.pager-link.prev .vpi-arrow-left {
+  transform: rotate(180deg) !important;
+}
+
+.pager-link.next .vpi-arrow-right {
+  transform: rotate(180deg) !important;
+}
+
+.pager-link.prev {
+  text-align: right !important;
+}
+
+.pager-link.next {
+  text-align: left !important;
+}
+
+/* Dropdown Chevrons */
+.VPLocalSearchBox .vpi-chevron-right,
+.VPLocalNavOutlineDropdown .vpi-chevron-right {
+  transform: rotate(90deg) !important;
+}
+
+.VPLocalNavOutlineDropdown.open .vpi-chevron-right,
+.VPLocalNavOutlineDropdown button.open .vpi-chevron-right {
+  transform: rotate(270deg) !important;
+}
+
+/* Mobile LocalNav (Breadcrumbs) */
+.VPLocalNav {
+  direction: rtl !important;
+}
+
+.VPLocalNavOutlineDropdown {
+  direction: rtl !important;
+}
+
+/* Mobile Navigation Screen (Drawer Menu) */
+.VPNavScreen {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.VPNavScreenMenu {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.VPNavScreenMenuLink {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+/* 4. Main Content (VPContent) & Document Container: Eliminates dead empty space */
+@media (min-width: 960px) {
+  .VPContent.has-sidebar {
+    padding-left: 24px !important;
+    padding-right: var(--vp-sidebar-width) !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPContent.has-sidebar {
+    padding-left: 36px !important;
+    padding-right: var(--vp-sidebar-width) !important;
+  }
+}
+
+/* 5. Document Container: Stretches right up to sidebar without dead margin */
+.VPDoc {
+  padding: 32px 0 64px 0 !important;
+}
+
+@media (max-width: 767px) {
+  .VPDoc {
+    overflow-x: hidden !important;
+  }
+}
+
+@media (min-width: 960px) {
+  .VPDoc {
+    padding: 32px 0 64px 0 !important;
+  }
+}
+
+@media (min-width: 1280px) {
+  .VPDoc .container {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 24px !important;
+    gap: 36px !important;
+  }
+
+  /* Content on the right: flex-grow to use all free space right up to sidebar */
+  .VPDoc .content {
+    order: 1 !important;
+    flex: 1 1 0% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Aside strictly to the left of content */
+  .VPDoc .aside {
+    order: 2 !important;
+    display: block !important;
+    flex-shrink: 0 !important;
+    width: 240px !important;
+    max-width: 240px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+/* Content Container stretches to fill available space */
+.VPDoc .content-container,
+.VPDoc.has-aside .content-container {
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+.VPDocAsideOutline .content {
+  border-left: none !important;
+  border-right: 1px solid var(--vp-c-divider) !important;
+  padding-left: 0 !important;
+  padding-right: 16px !important;
+  text-align: right !important;
+}
+
+.VPDocAsideOutline .outline-marker {
+  left: auto !important;
+  right: -1px !important;
+}
+
+/* 6. Sub-navigation / LocalNav */
+@media (min-width: 960px) {
+  .VPLocalNav.has-sidebar {
+    padding-left: 0 !important;
+    padding-right: var(--vp-sidebar-width) !important;
+  }
+}
+
+@media (min-width: 1440px) {
+  .VPLocalNav.has-sidebar {
+    padding-left: 0 !important;
+    padding-right: calc((100vw - var(--vp-layout-max-width)) / 2 + var(--vp-sidebar-width)) !important;
+  }
+}
+
+/* 7. Markdown Content, Tables & Bidi Text */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4,
+.vp-doc p,
+.vp-doc li {
+  text-align: right !important;
+}
+
+.vp-doc ul,
+.vp-doc ol {
+  padding-left: 0 !important;
+  padding-right: 1.5rem !important;
+}
+
+.vp-doc blockquote {
+  border-left: none !important;
+  border-right: 4px solid var(--vp-c-divider) !important;
+  padding-left: 0 !important;
+  padding-right: 16px !important;
+}
+
+.custom-block {
+  border-left: 1px solid transparent !important;
+  border-right: 4px solid var(--vp-c-brand-1) !important;
+}
+
+.custom-block.info {
+  border-right-color: var(--vp-c-brand-1) !important;
+}
+
+.custom-block.tip {
+  border-right-color: var(--vp-c-green-1, #10b981) !important;
+}
+
+.custom-block.warning {
+  border-right-color: var(--vp-c-yellow-1, #eab308) !important;
+}
+
+.custom-block.danger {
+  border-right-color: var(--vp-c-red-1, #ef4444) !important;
+}
+
+/* ========================================================
+   Responsive & Scrollable Spec Tables (100% Mobile Ready)
+   ======================================================== */
+.vp-doc table {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  margin: 1.5rem 0 !important;
+  border-collapse: collapse !important;
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.vp-doc th,
+.vp-doc td {
+  padding: 10px 14px !important;
+  border: 1px solid var(--vp-c-divider) !important;
+  vertical-align: middle !important;
+  text-align: right !important;
+  min-width: 110px !important;
+  white-space: nowrap !important;
+}
+
+.vp-doc th {
+  background-color: var(--vp-c-bg-soft) !important;
+  font-weight: 700 !important;
+}
+
+.vp-doc tr:nth-child(even) td {
+  background-color: var(--vp-c-bg-alt) !important;
+}
+
+/* Allow description and title columns to wrap naturally */
+.vp-doc td:nth-child(2),
+.vp-doc td:nth-child(3),
+.vp-doc th:nth-child(2),
+.vp-doc th:nth-child(3) {
+  min-width: 160px !important;
+  white-space: normal !important;
+}
+
+/* Custom smooth scrollbar for tables */
+.vp-doc table::-webkit-scrollbar {
+  height: 6px;
+}
+
+.vp-doc table::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-alt);
+}
+
+.vp-doc table::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 4px;
+}
+
+/* Preserve LTR for Code, Numbers & Technical Symbols */
+.vp-doc code,
+.vp-doc pre,
+.vp-doc .vp-code,
+.vp-doc .katex,
+.vp-doc .language-bash,
+.vp-doc .language-json,
+.vp-doc .language-ts,
+.vp-doc .language-c,
+.vp-doc .language-cpp,
+.vp-doc .language-text {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: embed !important;
+}
+
+.vp-doc td code {
+  font-size: 0.86rem;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+/* Hardware Badges */
+.badge-pin {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+  margin-left: 4px;
+}
+
+.badge-warn {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: rgba(234, 179, 8, 0.15);
+  color: #ca8a04;
+  margin-left: 4px;
+}
+
+.badge-danger {
+  display: inline-block;
+  padding: 2px 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+  margin-left: 4px;
+}
+
+/* 8. Homepage Hero RTL */
+.VPHero {
+  text-align: right !important;
+}
+
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline {
+  text-align: right !important;
+}
+
+.VPHero .actions {
+  justify-content: flex-start !important;
+}
+
+/* 9. Search Dialog */
+.VPLocalSearchBox .shell {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+.VPLocalSearchBox input {
+  direction: rtl !important;
+  text-align: right !important;
+}
