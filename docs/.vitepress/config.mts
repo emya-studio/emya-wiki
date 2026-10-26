@@ -8,6 +8,16 @@ export default defineConfig({
   base: '/',
   cleanUrls: true,
   lastUpdated: true,
+  markdown: {
+    math: true
+  },
+  vue: {
+    template: {
+      compilerOptions: {
+        isCustomElement: (tag) => tag === 'model-viewer'
+      }
+    }
+  },
   head: [
     ['link', { rel: 'icon', href: '/favicon.svg' }],
     ['link', { rel: 'preconnect', href: 'https://cdn.jsdelivr.net' }],
@@ -34,50 +44,19 @@ export default defineConfig({
     ],
     sidebar: [
       {
-        text: '۱. محصولات امیا',
+        text: '۱. ماژول‌های تغذیه',
         collapsed: false,
         items: [
-          { text: 'معرفی محصولات امیا', link: '/products/' },
-          { text: 'دستگاه پایش هوشمند Emya Pro', link: '/products/emya-pro' },
-          { text: 'نود سنسور بی‌سیم IoT', link: '/products/sensor-node' }
+          { text: 'معرفی ماژول‌های تغذیه', link: '/power-modules/' },
+          { text: 'ماژول مبدل باک <span class="latin">TPS54202 (EML01)</span>', link: '/power-modules/tps54202' },
+          { text: 'ماژول شارژر باتری <span class="latin">CN3702</span>', link: '/power-modules/cn3702' }
         ]
       },
       {
-        text: '۲. بردهای توسعه',
+        text: '۲. راهنمای توسعه نرم‌افزاری',
         collapsed: false,
         items: [
-          { text: 'بررسی بردهای توسعه', link: '/dev-boards/' },
-          { text: 'برد توسعه Emya ESP32-S3 DevKit', link: '/dev-boards/esp32s3-devkit' },
-          { text: 'برد پایه تست و آزمایشگاهی', link: '/dev-boards/baseboard' }
-        ]
-      },
-      {
-        text: '۳. ماژول‌های مبدل',
-        collapsed: false,
-        items: [
-          { text: 'انواع ماژول‌های مبدل', link: '/converters/' },
-          { text: 'مبدل USB به UART چندکاناله', link: '/converters/usb-to-uart' },
-          { text: 'مبدل باک سنکرون DC-DC', link: '/converters/dcdc-buck' },
-          { text: 'مبدل سطح ولتاژ منطقی (Level Shifter)', link: '/converters/level-shifter' }
-        ]
-      },
-      {
-        text: '۴. ماژول‌های MCU',
-        collapsed: false,
-        items: [
-          { text: 'نمای کلی ماژول‌های MCU', link: '/mcu-modules/' },
-          { text: 'ماژول پردازشی ESP32-S3', link: '/mcu-modules/esp32-s3' },
-          { text: 'ماژول میکروکنترلر کم‌مصرف Cortex-M', link: '/mcu-modules/cortex-m' }
-        ]
-      },
-      {
-        text: '۵. راهنمای توسعه نرم‌افزاری',
-        collapsed: false,
-        items: [
-          { text: 'شروع کار و ابزارهای لازم', link: '/software/' },
-          { text: 'پیکربندی محیط توسعه و SDK', link: '/software/sdk-setup' },
-          { text: 'راهنمای فلش فریم‌ور و دیباگ', link: '/software/flashing-guide' },
-          { text: 'کتابخانه‌ها و درایورهای سخت‌افزاری', link: '/software/drivers' }
+          { text: 'به‌زودی', link: '/software/' }
         ]
       }
     ],

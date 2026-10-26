@@ -7,17 +7,14 @@ Maintain a single source of truth for Emya electronic specifications, product ma
 
 ---
 
-## 5 Core Sections & Directory Mapping
+## Sections & Directory Mapping
 
-All documentation content must be filed under one of the 5 canonical sections:
+All documentation content must be filed under one of these sections:
 
 | # | Section | Directory | Purpose |
 | :-: | :--- | :--- | :--- |
-| **1** | **محصولات امیا** | `docs/products/` | Commercial devices, datasheets, industrial telemetry units. |
-| **2** | **بردهای توسعه** | `docs/dev-boards/` | DevKits, breadboard pinouts, schematics, board test fixtures. |
-| **3** | **ماژول‌های مبدل** | `docs/converters/` | Power supplies, buck/boost regulators, USB-to-UART, level shifters. |
-| **4** | **ماژول‌های MCU** | `docs/mcu-modules/` | Microcontroller modules, SoC specs, castellated footprint maps. |
-| **5** | **راهنمای توسعه نرم‌افزاری** | `docs/software/` | SDK tutorials, flashing guides, firmware builds, C/C++ drivers. |
+| **1** | **ماژول‌های تغذیه** | `docs/power-modules/` | Emya power modules: TPS54202 buck converter, CN3702 Li-ion charger. |
+| **2** | **راهنمای توسعه نرم‌افزاری** | `docs/software/` | Coming soon — placeholder page only. |
 
 ---
 
@@ -61,6 +58,24 @@ When adding any new hardware component or module, follow this standard structure
 - خازن‌های دیکوپلینگ پیشنهادی
 - مقاومت‌های پول‌آپ یا دمپینگ سری
 ```
+
+---
+
+## Module Pages (Assets, 3D Model, Downloads)
+
+Reference implementation: `docs/power-modules/tps54202.md` (EML01).
+
+- **Assets** live in `docs/public/modules/<code>/` (e.g. `eml01/`):
+  - `top.webp`, `top-headers.webp`, `bottom.webp` — Altium 3D renders, background removed and cropped
+  - `schematic.svg`, `pcb-top.svg` — vector pages converted from the Altium PDF (`pdftocairo -svg`)
+  - `<code>.glb`, `<code>-no-headers.glb` — 3D models for the `<Model3D>` viewer
+  - `downloads/` — IntLib, STEP and PDF files offered for download
+- **3D models** are generated from the STEP file, never edited by hand:
+  1. Describe the module in `scripts/models/<code>.json` (STEP path, board textures, part colours, outputs).
+  2. Run `npm run model scripts/models/<code>.json`.
+- **3D viewer**: `<ClientOnly><Model3D :variants="[...]" poster="..." /></ClientOnly>` (component in `docs/.vitepress/theme/components/Model3D.vue`).
+- **Latin digits**: the site font uses Persian digits (`ss01`). Wrap part numbers and codes outside of `code` spans in `<span class="latin">…</span>`.
+- **Do not publish unverified numbers**: values from an IC datasheet must be labelled as such until measured on the module.
 
 ---
 

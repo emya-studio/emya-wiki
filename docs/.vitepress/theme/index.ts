@@ -1,9 +1,13 @@
 import DefaultTheme from 'vitepress/theme'
 import './custom.css'
 import { onMounted } from 'vue'
+import Model3D from './components/Model3D.vue'
 
 export default {
   extends: DefaultTheme,
+  enhanceApp({ app }) {
+    app.component('Model3D', Model3D)
+  },
   setup() {
     onMounted(() => {
       if (typeof window === 'undefined') return

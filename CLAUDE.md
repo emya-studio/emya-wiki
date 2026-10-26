@@ -48,11 +48,8 @@ emya-wiki/
 │   │   ├── emya-wiki-logo-dark.svg
 │   │   └── favicon.svg            # Emya hardware symbol (< ● >)
 │   ├── index.md                   # Wiki landing page
-│   ├── products/                  # 1. Emya commercial products (Emya Pro, Sensor Node)
-│   ├── dev-boards/                # 2. DevKits & test baseboards
-│   ├── converters/                # 3. DC-DC bucks, USB-to-UART, Level Shifters
-│   ├── mcu-modules/               # 4. ESP32-S3, Cortex-M modules
-│   └── software/                  # 5. SDK setup, flashing, C/C++ drivers
+│   ├── power-modules/             # 1. Emya power modules (TPS54202 buck, CN3702 charger)
+│   └── software/                  # 2. Software guide (coming soon)
 ├── package.json
 ├── CLAUDE.md                      # AI instructions and codebase rules
 ├── AGENT.md                       # Agent contributor guidelines

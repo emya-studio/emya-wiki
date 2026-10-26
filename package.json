@@ -6,9 +6,13 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "model": "node scripts/step-to-glb.mjs"
   },
   "devDependencies": {
+    "@google/model-viewer": "^4.4.0",
+    "markdown-it-mathjax3": "^4.3.2",
+    "occt-import-js": "^0.0.23",
     "vitepress": "^1.6.3"
   }
 }

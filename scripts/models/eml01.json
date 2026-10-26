@@ -1,0 +1,43 @@
+{
+  "step": "docs/public/modules/eml01/downloads/EML01_TPS54X02_v1.1.0.step",
+  "board": "Board",
+  "textures": {
+    "top": "scripts/models/eml01/tex-top.jpg",
+    "bottom": "scripts/models/eml01/tex-bottom.jpg"
+  },
+  "colors": {
+    "Board": [0.16, 0.32, 0.14],
+    "U1": { "rgb": [0.78, 0.78, 0.8], "metal": 0.9, "rough": 0.35 },
+    "U1.0": [0.1, 0.1, 0.11],
+    "L1": { "rgb": [0.09, 0.09, 0.1], "rough": 0.45 },
+    "POT1.0": [0.95, 0.95, 0.93],
+    "POT1.1": [0.02, 0.22, 0.78],
+    "POT1": { "rgb": [0.8, 0.8, 0.82], "metal": 0.9, "rough": 0.3 },
+    "R1.0": [0.08, 0.08, 0.08],
+    "R1.1": [0.92, 0.92, 0.9],
+    "R1": { "rgb": [0.8, 0.8, 0.82], "metal": 0.9, "rough": 0.3 },
+    "C2": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C3": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C5": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C2.2": [0.45, 0.23, 0.07],
+    "C3.2": [0.45, 0.23, 0.07],
+    "C5.2": [0.45, 0.23, 0.07],
+    "C1": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C4": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C6": { "rgb": [0.82, 0.82, 0.84], "metal": 0.9, "rough": 0.3 },
+    "C1.2": [0.78, 0.55, 0.22],
+    "C4.2": [0.78, 0.55, 0.22],
+    "C6.2": [0.78, 0.55, 0.22],
+    "J1": { "rgb": [0.85, 0.66, 0.2], "metal": 0.9, "rough": 0.3 },
+    "J2": { "rgb": [0.85, 0.66, 0.2], "metal": 0.9, "rough": 0.3 }
+  },
+  "boxes": {
+    "J1": { "min": [null, 2.65, -0.05], "max": [null, 5.35, 2.55], "color": [0.07, 0.07, 0.07] },
+    "J2": { "min": [null, 2.65, -0.05], "max": [null, 5.35, 2.55], "color": [0.07, 0.07, 0.07] }
+  },
+  "exclude": ["R2"],
+  "outputs": [
+    { "file": "docs/public/modules/eml01/eml01.glb" },
+    { "file": "docs/public/modules/eml01/eml01-no-headers.glb", "exclude": ["J1", "J2"] }
+  ]
+}
