@@ -2,7 +2,7 @@
   "step": "docs/public/modules/eml01/downloads/EML01_TPS54X02_v1.1.0.step",
   "board": "Board",
   "textures": {
-    "top": "scripts/models/eml01/tex-top.jpg",
+    "top": "scripts/models/eml01/tex-top.png",
     "bottom": "scripts/models/eml01/tex-bottom.jpg"
   },
   "colors": {

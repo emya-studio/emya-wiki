@@ -1071,3 +1071,11 @@ body,
   font-size: 0.85rem;
   color: var(--vp-c-text-2);
 }
+
+/* 12. Bidi: every inline Latin token (code, .latin) is its own isolated LTR unit, so brackets
+   and punctuation around it follow the surrounding Persian text instead of merging with it */
+.vp-doc :not(pre) > code,
+.latin {
+  direction: ltr;
+  unicode-bidi: isolate;
+}

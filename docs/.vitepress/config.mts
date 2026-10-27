@@ -49,7 +49,7 @@ export default defineConfig({
         items: [
           { text: 'معرفی ماژول‌های تغذیه', link: '/power-modules/' },
           { text: 'ماژول مبدل باک <span class="latin">TPS54202 (EML01)</span>', link: '/power-modules/tps54202' },
-          { text: 'ماژول شارژر باتری <span class="latin">CN3702</span>', link: '/power-modules/cn3702' }
+          { text: 'ماژول شارژر باتری <span class="latin">CN3702 (EML02)</span>', link: '/power-modules/cn3702' }
         ]
       },
       {
@@ -101,10 +101,6 @@ export default defineConfig({
           }
         }
       }
-    },
-    editLink: {
-      pattern: 'https://github.com/emya-studio/emya-wiki/edit/main/docs/:path',
-      text: 'ویرایش این صفحه در گیت‌هاب'
     },
     footer: {
       message: 'مستندات سخت‌افزاری و الکترونیکی امیا',

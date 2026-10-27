@@ -31,9 +31,9 @@ features:
       <span class="pc-desc">کاهش ولتاژ 4.5 تا 28 ولت به ولتاژ دلخواه، تا 2 آمپر</span>
     </a>
     <a href="/power-modules/cn3702">
-      <span class="pc-placeholder">🔋</span>
+      <img src="/modules/eml02/top-headers.webp" alt="ماژول شارژر باتری CN3702" />
       <span class="pc-title">شارژر باتری <span class="latin">CN3702</span></span>
-      <span class="pc-desc">شارژ باتری لیتیومی دو سل — به‌زودی</span>
+      <span class="pc-desc">شارژ باتری لیتیومی دو سل (8.4 ولت) با ورودی 7.5 تا 28 ولت، تا 2 آمپر</span>
     </a>
   </div>
 </div>
