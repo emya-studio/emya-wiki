@@ -1,4 +1,4 @@
-name: Deploy Emya Wiki to GitHub Pages
+name: Deploy Emya Wiki to server
 
 on:
   push:
@@ -8,15 +8,13 @@ on:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 concurrency:
-  group: pages
+  group: deploy-wiki
   cancel-in-progress: false
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,18 +34,21 @@ jobs:
       - name: Build with VitePress
         run: npm run docs:build
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: docs/.vitepress/dist
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      # Upload to a fresh release dir, then swap the symlink so visitors never see a half-copied site
+      - name: Upload and switch release
+        env:
+          HOST: ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}
+          PORT: ${{ secrets.SSH_PORT || '22' }}
+          ROOT: /var/www/wiki.emya.tech
+        run: |
+          RELEASE="$ROOT/releases/$(date +%Y%m%d%H%M%S)-${GITHUB_SHA::7}"
+          ssh -p "$PORT" "$HOST" "mkdir -p '$RELEASE'"
+          rsync -az --delete -e "ssh -p $PORT" docs/.vitepress/dist/ "$HOST:$RELEASE/"
+          ssh -p "$PORT" "$HOST" "ln -sfn '$RELEASE' '$ROOT/current' && cd '$ROOT/releases' && ls -1t | tail -n +6 | xargs -r rm -rf"

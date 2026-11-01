@@ -6,7 +6,7 @@ Comprehensive guide and instructions for Claude Code and AI agents working on th
 - **Project**: Emya Electronics & Hardware Documentation Wiki
 - **Organization**: `emya-studio`
 - **Engine**: VitePress 1.6+ (Vue 3, Vite, TypeScript)
-- **Deployment**: GitHub Actions -> GitHub Pages (Zero-cost hosting with custom domain `wiki.emya.tech`)
+- **Deployment**: GitHub Actions -> build -> rsync over SSH to own server (`/var/www/wiki.emya.tech/current`), served by nginx (`deploy/nginx-wiki.emya.tech.conf`)
 - **Primary Language**: Persian (`fa-IR`) with full Right-to-Left (RTL) support
 
 ---
